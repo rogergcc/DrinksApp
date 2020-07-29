@@ -1,0 +1,50 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--    </style>-->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/manropemedium</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+
+    <style name="AppBarLayoutTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="StyleCollapsingToolbarLayout" parent="Widget.Design.CollapsingToolbar">
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+    </style>
+
+    <style name="StyleCollapsingToolbarLayoutExpanded" >
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+<!--        <item name="fontFamily">@font/manropemedium</item>-->
+        <item name="android:fontFamily">@font/manropemedium</item>
+    </style>
+    <style name="StyleCollapsingToolbarLayoutCollapse" >
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+<!--        <item name="fontFamily">@font/manropemedium</item>-->
+        <item name="android:fontFamily">@font/manropemedium</item>
+    </style>
+</resources>
