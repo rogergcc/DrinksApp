@@ -1,22 +1,20 @@
 package com.rogergcc.drinksapp.ui.home;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+
 import com.rogergcc.drinksapp.R;
 import com.rogergcc.drinksapp.adapter.RecyclerViewHomeAdapter;
-import com.rogergcc.drinksapp.adapter.ViewPagerHeaderAdapter;
 import com.rogergcc.drinksapp.adapter.ViewPagerHeaderDrinksAdapter;
 import com.rogergcc.drinksapp.common.Utils;
 import com.rogergcc.drinksapp.databinding.ActivityHomeBinding;
 import com.rogergcc.drinksapp.remote.model.Categories;
 import com.rogergcc.drinksapp.remote.model.Drinks;
-import com.rogergcc.drinksapp.remote.model.Meals;
 import com.rogergcc.drinksapp.ui.category.CategoryActivity;
 import com.rogergcc.drinksapp.ui.detail.DetailActivity;
 
@@ -65,7 +63,18 @@ public class HomeActivity extends AppCompatActivity implements HomeDrinkView{
         ViewPagerHeaderDrinksAdapter headerAdapter = new ViewPagerHeaderDrinksAdapter(drinks, this);
         binding.viewPagerHeader.setAdapter(headerAdapter);
         binding.viewPagerHeader.setPadding(20, 0, 150, 0);
+        binding.viewPagerHeader.setPadding(50, 0, 150, 0);
         headerAdapter.notifyDataSetChanged();
+
+//        ViewPager.PageTransformer pageTransformer = (page, position) -> {
+////            page.setTranslationX(-pageTranslationX * position);
+//
+//            // Next line scales the item's height. You can remove it if you don't want this effect
+//            page.setScaleY(1 - (0.25f * abs(position)));
+//            // If you want a fading effect uncomment the next line:
+//            // page.alpha = 0.25f + (1 - abs(position))
+//        };
+//        binding.viewPagerHeader.setPageTransformer(false,pageTransformer);
 
         headerAdapter.setOnItemClickListener((v, position) -> {
             //TODO #8.1 make an intent to DetailActivity (get the name of the meal from the edit text view, then send the name of the meal to DetailActivity)
