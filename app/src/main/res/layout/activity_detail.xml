@@ -30,8 +30,11 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
 
-            app:title="@string/dot_loading">
+            app:title="@string/dot_loading"
+            >
             <ImageView
+
+                android:src="@drawable/img"
                 android:id="@+id/mealThumb"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -44,10 +47,13 @@
                 android:layout_height="match_parent" />
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
+                android:fitsSystemWindows="false"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

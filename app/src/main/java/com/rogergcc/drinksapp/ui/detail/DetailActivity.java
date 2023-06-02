@@ -1,37 +1,31 @@
 package com.rogergcc.drinksapp.ui.detail;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import static com.rogergcc.drinksapp.ui.home.HomeActivity.EXTRA_DETAIL;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.rogergcc.drinksapp.R;
 import com.rogergcc.drinksapp.adapter.DrinksIngredientsAdapter;
-import com.rogergcc.drinksapp.adapter.RecyclerViewHomeAdapter;
 import com.rogergcc.drinksapp.common.Utils;
 import com.rogergcc.drinksapp.databinding.ActivityDetailBinding;
 import com.rogergcc.drinksapp.remote.model.Drinks;
-import com.rogergcc.drinksapp.remote.model.Meals;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import static com.rogergcc.drinksapp.ui.home.HomeActivity.EXTRA_DETAIL;
-
-public class DetailActivity extends AppCompatActivity implements DetailView{
+public class DetailActivity extends AppCompatActivity implements DetailView {
 
     private ActivityDetailBinding binding;
 
@@ -39,8 +33,9 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_detail);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// fullscreen hace rectangular
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
 
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
@@ -56,6 +51,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
         DetailPresenter presenter = new DetailPresenter(this);
         presenter.getDrinkById(strMealName);
     }
+
     private void setupActionBar() {
         setSupportActionBar(binding.toolbar);
         binding.collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.colorWhite));
@@ -97,13 +93,11 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home :
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -204,7 +198,6 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
         }
 
 
-
         binding.youtube.setOnClickListener(v -> {
 //            Intent intentYoutube = new Intent(Intent.ACTION_VIEW);
 //            intentYoutube.setData(Uri.parse(drink.getStryoutube()));
@@ -224,7 +217,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
         DrinksIngredientsAdapter drinksIngredientsAdapter = new DrinksIngredientsAdapter(drinkIngredientsList, this);
         binding.recyclerIngredients.setAdapter(drinksIngredientsAdapter);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         binding.recyclerIngredients.setLayoutManager(linearLayoutManager);
 //        binding.recyclerIngredients.setNestedScrollingEnabled(true);
         drinksIngredientsAdapter.notifyDataSetChanged();
